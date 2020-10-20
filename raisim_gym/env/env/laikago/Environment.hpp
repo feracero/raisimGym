@@ -57,7 +57,7 @@ class ENVIRONMENT : public RaisimGymEnv {
       RaisimGymEnv(resourceDir, cfg), distribution_(0.0, 0.2), visualizable_(visualizable) {
 
     /// add objects
-    laikago_ = world_->addArticulatedSystem(resourceDir_+"/laikago.urdf");
+    laikago_ = world_->addArticulatedSystem(resourceDir_+"/urdf/laikago.urdf");
     laikago_->setControlMode(raisim::ControlMode::PD_PLUS_FEEDFORWARD_TORQUE);
     ground_ = world_->addGround();
     world_->setERP(0,0);
@@ -74,7 +74,7 @@ class ENVIRONMENT : public RaisimGymEnv {
     pTarget_.setZero(gcDim_); vTarget_.setZero(gvDim_); pTarget12_.setZero(nJoints_);
 
     /// this is nominal configuration of anymal
-    gc_init_ << 0, 0, 0.46, 1, 0.0, 0.0, 0.0, 0.0, 0.5, -1, 0, 0.5, -1, 0.00, 0.5, -1, 0, 0.5, -0.7;
+    gc_init_ << 0, 0, 0.46, 1, 0.0, 0.0, 0.0, 0.0, 0.5, -1, 0, 0.5, -1, 0.00, 0.5, -1, 0, 0.5, -1;
 
     /// set pd gains
     Eigen::VectorXd jointPgain(gvDim_), jointDgain(gvDim_);
@@ -266,4 +266,3 @@ class ENVIRONMENT : public RaisimGymEnv {
 };
 
 }
-
